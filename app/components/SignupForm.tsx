@@ -129,7 +129,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
           <Link
             href={signupForm.consentLinkHref}
             style={{
-              color: "rgba(167,139,250,0.8)",
+              color: "rgba(139, 172, 250, 0.8)",
               textDecoration: "underline",
               textUnderlineOffset: "2px",
             }}

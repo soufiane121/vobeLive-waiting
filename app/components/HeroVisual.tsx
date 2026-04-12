@@ -106,7 +106,7 @@ export default function HeroVisual() {
     const cy = screenH / 2;
 
     // Range rings
-    ctx.strokeStyle = "rgba(167,139,250,0.12)";
+    ctx.strokeStyle = "rgba(79,126,232,0.15)";
     ctx.lineWidth = 0.5;
     for (const r of RING_RATIOS) {
       ctx.beginPath();
@@ -115,7 +115,7 @@ export default function HeroVisual() {
     }
 
     // Crosshairs
-    ctx.strokeStyle = "rgba(167,139,250,0.08)";
+    ctx.strokeStyle = "rgba(79,126,232,0.10)";
     ctx.setLineDash([3, 5]);
     ctx.beginPath();
     ctx.moveTo(cx - MAX_RADIUS, cy);
@@ -135,12 +135,12 @@ export default function HeroVisual() {
       ctx.moveTo(cx, cy);
       ctx.arc(cx, cy, MAX_RADIUS, a - 0.025, a + 0.025);
       ctx.closePath();
-      ctx.fillStyle = `rgba(139,92,246,${alpha})`;
+      ctx.fillStyle = `rgba(79,126,232,${alpha})`;
       ctx.fill();
     }
 
     // Leading edge
-    ctx.strokeStyle = "rgba(167,139,250,0.8)";
+    ctx.strokeStyle = "rgba(79,126,232,0.85)";
     ctx.lineWidth = 1.5;
     ctx.beginPath();
     ctx.moveTo(cx, cy);
@@ -148,7 +148,7 @@ export default function HeroVisual() {
     ctx.stroke();
 
     // Center dot
-    ctx.fillStyle = "rgba(167,139,250,1)";
+    ctx.fillStyle = "rgba(79,126,232,1)";
     ctx.beginPath();
     ctx.arc(cx, cy, 4, 0, Math.PI * 2);
     ctx.fill();
@@ -170,14 +170,14 @@ export default function HeroVisual() {
 
         // Outer pulse ring
         const ringR = 3 + (1 - b.lit) * 10;
-        ctx.strokeStyle = `rgba(167,139,250,${b.lit * 0.4})`;
+        ctx.strokeStyle = `rgba(79,126,232,${b.lit * 0.5})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.arc(bx, by, ringR, 0, Math.PI * 2);
         ctx.stroke();
 
         // Core dot
-        ctx.fillStyle = `rgba(192,160,255,${b.lit})`;
+        ctx.fillStyle = `rgba(107,148,240,${b.lit})`;
         ctx.beginPath();
         ctx.arc(bx, by, 3, 0, Math.PI * 2);
         ctx.fill();

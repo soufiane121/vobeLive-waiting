@@ -7,17 +7,17 @@ export default function NavBar() {
 
   return (
     <nav
-      className="w-full flex items-center justify-between relative z-20"
+      className="w-full flex items-center justify-end relative z-20"
       style={{
         padding: "14px 26px",
         borderBottom: "0.5px solid rgba(255,255,255,0.05)",
       }}
     >
       {/* Logo — 15px weight 500 */}
-      <span className="text-[15px] font-medium text-white tracking-tight">
+      {/* <span className="text-[15px] font-medium text-white tracking-tight">
         {before}
         <span className="text-[var(--accent-secondary)]">{accent}</span>
-      </span>
+      </span> */}
 
       {/* Coming soon pill */}
       <span

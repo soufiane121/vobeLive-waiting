@@ -3,35 +3,50 @@
 @tailwind utilities;
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   COLOUR PALETTE — Master UI Spec (purple)
+   COLOUR PALETTE — VibeLive Premium (blue)
    ═══════════════════════════════════════════════════════════════════════════ */
 :root {
-  --bg-primary: #09090f;
+  /* Backgrounds */
+  --bg-primary: #0B0E14;
+  --bg-secondary: #13161E;
   --surface: rgba(255, 255, 255, 0.04);
-  --surface-accent: rgba(167, 139, 250, 0.07);
+  --surface-primary: #1A1D23;
+  --surface-secondary: #21252E;
+  --surface-tertiary: #282D38;
+  --surface-accent: rgba(79, 126, 232, 0.15);
 
-  --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.38);
-  --text-tertiary: rgba(255, 255, 255, 0.2);
-  --text-micro: rgba(255, 255, 255, 0.15);
+  /* Text */
+  --text-primary: #F0F2F5;
+  --text-secondary: #9CA3AF;
+  --text-tertiary: #4B5261;
 
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-default: rgba(255, 255, 255, 0.1);
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-default: rgba(255, 255, 255, 0.12);
 
-  --accent-primary: #7c3aed;
-  --accent-secondary: #a78bfa;
-  --accent-hover: #6d28d9;
-  --accent-surface: rgba(167, 139, 250, 0.07);
-  --accent-border: rgba(167, 139, 250, 0.2);
-  --accent-border-strong: rgba(167, 139, 250, 0.3);
-  --accent-bg: rgba(167, 139, 250, 0.1);
-  --accent-focus: rgba(167, 139, 250, 0.5);
-  --accent-check-bg: rgba(167, 139, 250, 0.15);
+  /* Accent — Blue */
+  --accent-primary: #4F7EE8;
+  --accent-secondary: #6B94F0;
+  --accent-hover: #3D6BD4;
+  --accent-surface: rgba(79, 126, 232, 0.15);
+  --accent-border: rgba(79, 126, 232, 0.28);
+  --accent-border-strong: rgba(79, 126, 232, 0.4);
+  --accent-bg: rgba(79, 126, 232, 0.08);
+  --accent-focus: rgba(79, 126, 232, 0.5);
+  --accent-check-bg: rgba(79, 126, 232, 0.15);
 
+  /* Hot */
+  --hot-primary: #C96040;
+  --hot-surface: rgba(201, 96, 64, 0.12);
+  --hot-border: rgba(201, 96, 64, 0.24);
+
+  /* Success */
   --success-primary: #4CAF50;
   --success-surface: rgba(76, 175, 80, 0.12);
   --success-border: rgba(76, 175, 80, 0.18);
+  --light-green-bg: rgba(74, 99, 76, 0.22);
 
+  /* Separator */
   --separator: rgba(255, 255, 255, 0.05);
 }
 
@@ -77,7 +92,7 @@ body {
   position: fixed;
   width: 320px;
   height: 320px;
-  background: #6d28d9;
+  background: var(--accent-primary);
   opacity: 0.13;
   filter: blur(70px);
   border-radius: 50%;

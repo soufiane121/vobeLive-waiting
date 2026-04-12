@@ -44,7 +44,7 @@ export default function LaunchProgress() {
           {launchProgress.goalLabel(env.CITY)}
         </span>
         <span className="tabular-nums" style={{ fontSize: "11px", color: "rgba(255,255,255,0.45)" }}>
-          {percent}% — {333 + count.toLocaleString()} {launchProgress.spotsUnit}
+          {percent}% — {count.toLocaleString()} {launchProgress.spotsUnit}
         </span>
       </div>
 
