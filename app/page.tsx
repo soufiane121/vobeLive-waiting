@@ -107,7 +107,7 @@ export default function WaitlistPage() {
 								/>
 							)}
 
-							<LaunchProgress />
+							{/* <LaunchProgress /> */}
 
 							{referralData ? (
 								<ReferralModal

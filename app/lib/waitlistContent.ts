@@ -56,6 +56,21 @@ export const signupForm = {
 		`No app download. No credit card. We'll only email when ${city} goes live.`,
 };
 
+/* ── Velvet Rope (social proof under button) ──────────────────────────── */
+export const velvetRope = {
+	minPeople: 1,
+	maxPeople: 5,
+	maxAvatars: 4,
+	city: CITY,
+	label: (city: string) => `people joined the ${city} list in the last hour`,
+	fallbackEmails: [
+		"alex@example.com",
+		"jordan@example.com",
+		"casey@example.com",
+		"morgan@example.com",
+	],
+};
+
 /* ── Feature cards (WHAT VIBELIVE DOES) ─────────────────────────────────── */
 export const featuresSection = {
 	sectionLabel: `WHAT ${APP_NAME.toUpperCase()} DOES`,

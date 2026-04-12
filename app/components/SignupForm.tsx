@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import Link from "next/link";
 import { signupForm, env } from "../lib/waitlistContent";
+import VelvetRope from "./VelvetRope";
 
 interface SignupFormProps {
   onSuccess: (data: { referralCode: string; queuePosition: number }) => void;
@@ -158,6 +159,9 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
       <p className="mt-3 text-center" style={{ fontSize: "11px", color: "var(--text-micro)" }}>
         {signupForm.disclaimer(env.CITY)}
       </p>
+
+      {/* Velvet Rope — social proof */}
+      <VelvetRope />
 
       {/* Error message */}
       {submitState === "error" && errorMsg && (
