@@ -100,12 +100,12 @@ export default function WaitlistPage() {
 
 						{/* Form section */}
 						<section className="flex flex-col gap-4">
-							{referralData && (
+							{/* {referralData && (
 								<QueuePositionCard
 									position={referralData.queuePosition}
 									totalCount={referralData.queuePosition * 2}
 								/>
-							)}
+							)} */}
 
 							{/* <LaunchProgress /> */}
 

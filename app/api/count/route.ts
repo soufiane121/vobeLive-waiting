@@ -1,18 +1,34 @@
 import { NextResponse } from "next/server";
-
-const BACKEND_API_URL = process.env.BACKEND_API_URL || "http://localhost:3000";
+import { supabaseAdmin } from "@/app/utils/supabase/admin";
 
 export async function GET() {
   try {
-    const res = await fetch(`${BACKEND_API_URL}/api/waitlist/count`, {
-      next: { revalidate: 60 },
-    });
+    const { data, error } = await supabaseAdmin
+      .from("waitlist_stats")
+      .select("total_count")
+      .single();
 
-    const data = await res.json();
+    if (error) {
+      console.error("Supabase count error:", error);
+      // Fallback to direct count
+      const { count, error: countError } = await supabaseAdmin
+        .from("waitlist")
+        .select("*", { count: "exact", head: true });
 
-    return NextResponse.json(data, {
-      headers: { "Cache-Control": "public, max-age=60" },
-    });
+      if (countError) {
+        return NextResponse.json({ count: 0 }, { status: 500 });
+      }
+
+      return NextResponse.json(
+        { count: count || 0 },
+        { headers: { "Cache-Control": "public, max-age=60" } }
+      );
+    }
+
+    return NextResponse.json(
+      { count: data?.total_count || 0 },
+      { headers: { "Cache-Control": "public, max-age=60" } }
+    );
   } catch {
     return NextResponse.json({ count: 0 }, { status: 502 });
   }

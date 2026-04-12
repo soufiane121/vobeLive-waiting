@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-
-const BACKEND_API_URL = process.env.BACKEND_API_URL || "http://localhost:3000";
+import { supabaseAdmin } from "@/app/utils/supabase/admin";
 
 export async function GET(request: NextRequest) {
   try {
@@ -12,12 +11,23 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const res = await fetch(
-      `${BACKEND_API_URL}/api/waitlist/position?code=${encodeURIComponent(code)}`
-    );
+    const { data, error } = await supabaseAdmin
+      .from("waitlist")
+      .select("queue_position, referral_count, email")
+      .eq("referral_code", code.toUpperCase().trim())
+      .single();
 
-    const data = await res.json();
-    return NextResponse.json(data, { status: res.status });
+    if (error || !data) {
+      return NextResponse.json(
+        { error: "Invalid referral code." },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({
+      queuePosition: data.queue_position,
+      referralCount: data.referral_count,
+    });
   } catch {
     return NextResponse.json(
       { error: "Service unavailable." },

@@ -117,7 +117,7 @@ export const referralModal = {
 	linkUsedLabel: (count: number) =>
 		`Your link has been used ${count} ${count === 1 ? "time" : "times"}.`,
 	moveUpText: "Each person who joins using your link moves you up 1 spot.",
-	shareCta: "Share your link and move up the queue.",
+	shareCta: "Help your friends and share",
 };
 
 /* ── Shared env exports ─────────────────────────────────────────────────── */

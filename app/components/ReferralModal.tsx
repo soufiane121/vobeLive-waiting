@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { referralModal, env } from "../lib/waitlistContent";
+import { supabaseBrowser } from "../utils/supabase/browser";
 
 interface ReferralModalProps {
   referralCode: string;
@@ -24,13 +25,17 @@ export default function ReferralModal({
 
     const poll = async () => {
       try {
-        const res = await fetch(`/api/position?code=${referralCode}`);
-        if (!res.ok) return;
-        const data = await res.json();
+        const { data, error } = await supabaseBrowser
+          .from("waitlist")
+          .select("queue_position, referral_count")
+          .eq("referral_code", referralCode.toUpperCase())
+          .single();
+
+        if (error || !data) return;
+        
         if (mounted) {
-          if (typeof data.position === "number") setPosition(data.position);
-          if (typeof data.referralCount === "number")
-            setReferralCount(data.referralCount);
+          setPosition(data.queue_position);
+          setReferralCount(data.referral_count);
         }
       } catch {
         // Silent
@@ -97,13 +102,13 @@ export default function ReferralModal({
       </h2>
 
       {/* Queue position */}
-      <p className="text-brand-text-secondary font-body text-base mb-8">
+      {/* <p className="text-brand-text-secondary font-body text-base mb-8">
         You are{" "}
         <span className="font-display text-brand-text font-bold text-lg tabular-nums">
           #{position.toLocaleString()}
         </span>{" "}
         in {env.CITY}.
-      </p>
+      </p> */}
 
       {/* Referral section */}
       <div className="bg-[var(--surface-primary)] border border-[var(--border-primary)] rounded-xl p-6 mb-6">
@@ -138,13 +143,13 @@ export default function ReferralModal({
         </div>
 
         {/* Referral count */}
-        <p className="mt-4 text-xs text-brand-text-tertiary font-body">
+        {/* <p className="mt-4 text-xs text-brand-text-tertiary font-body">
           {referralModal.linkUsedLabel(referralCount)}
-        </p>
+        </p> */}
 
-        <p className="mt-2 text-xs text-brand-text-tertiary font-body">
+        {/* <p className="mt-2 text-xs text-brand-text-tertiary font-body">
           {referralModal.moveUpText}
-        </p>
+        </p> */}
       </div>
     </div>
   );

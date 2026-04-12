@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import Link from "next/link";
 import { signupForm, env } from "../lib/waitlistContent";
 import VelvetRope from "./VelvetRope";
+import { supabaseBrowser } from "../utils/supabase/browser";
 
 interface SignupFormProps {
   onSuccess: (data: { referralCode: string; queuePosition: number }) => void;
@@ -37,33 +38,51 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
 
       try {
         const params = new URLSearchParams(window.location.search);
-        const ref = params.get("ref") || undefined;
+        const ref = params.get("ref") || null;
 
-        const res = await fetch("/api/signup", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email: email.trim(),
+        // Check if email already exists
+        const { data: existingUser } = await supabaseBrowser
+          .from("waitlist")
+          .select("referral_code, queue_position")
+          .eq("email", email.toLowerCase().trim())
+          .single();
+
+        if (existingUser) {
+          setSubmitState("success");
+          onSuccess({
+            referralCode: existingUser.referral_code,
+            queuePosition: existingUser.queue_position,
+          });
+          return;
+        }
+
+        // Insert new waitlist entry
+        const { data: newEntry, error } = await supabaseBrowser
+          .from("waitlist")
+          .insert({
+            email: email.toLowerCase().trim(),
             city: cityInput.trim() || null,
-            ref,
+            referred_by: ref,
             consented: true,
-          }),
-        });
+            source: "website",
+          })
+          .select("referral_code, queue_position")
+          .single();
 
-        const data = await res.json();
-
-        if (!res.ok || !data.success) {
+        if (error) {
+          console.error("Supabase error:", error);
           setSubmitState("error");
-          setErrorMsg(data.error || "Something went wrong. Please try again.");
+          setErrorMsg("Failed to join waitlist. Please try again.");
           return;
         }
 
         setSubmitState("success");
         onSuccess({
-          referralCode: data.referralCode,
-          queuePosition: data.queuePosition,
+          referralCode: newEntry.referral_code,
+          queuePosition: newEntry.queue_position,
         });
-      } catch {
+      } catch (err) {
+        console.error("Signup error:", err);
         setSubmitState("error");
         setErrorMsg("Network error. Please check your connection and try again.");
       }
