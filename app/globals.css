@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   COLOUR PALETTE — Master UI Spec (purple)
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  --bg-primary: #09090f;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-accent: rgba(167, 139, 250, 0.07);
+
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.38);
+  --text-tertiary: rgba(255, 255, 255, 0.2);
+  --text-micro: rgba(255, 255, 255, 0.15);
+
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.1);
+
+  --accent-primary: #7c3aed;
+  --accent-secondary: #a78bfa;
+  --accent-hover: #6d28d9;
+  --accent-surface: rgba(167, 139, 250, 0.07);
+  --accent-border: rgba(167, 139, 250, 0.2);
+  --accent-border-strong: rgba(167, 139, 250, 0.3);
+  --accent-bg: rgba(167, 139, 250, 0.1);
+  --accent-focus: rgba(167, 139, 250, 0.5);
+  --accent-check-bg: rgba(167, 139, 250, 0.15);
+
+  --success-primary: #4CAF50;
+  --success-surface: rgba(76, 175, 80, 0.12);
+  --success-border: rgba(76, 175, 80, 0.18);
+
+  --separator: rgba(255, 255, 255, 0.05);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BASE STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BACKGROUND LAYERS — Grid + Heat blobs
+   ═══════════════════════════════════════════════════════════════════════════ */
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--bg-primary);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.heat-blob-a {
+  position: fixed;
+  width: 320px;
+  height: 320px;
+  background: #6d28d9;
+  opacity: 0.13;
+  filter: blur(70px);
+  border-radius: 50%;
+  top: -80px;
+  right: -60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heat-blob-b {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  background: #1d4ed8;
+  opacity: 0.09;
+  filter: blur(70px);
+  border-radius: 50%;
+  top: 450px;
+  left: -60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   IPHONE MOCKUP
+   ═══════════════════════════════════════════════════════════════════════════ */
+.iphone-mockup {
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .iphone-mockup canvas {
+    display: none !important;
+  }
+  .live-pulse {
+    animation: none !important;
+    opacity: 0.7 !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CUSTOM CHECKBOX — Purple theme per spec
+   ═══════════════════════════════════════════════════════════════════════════ */
+.consent-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.consent-checkbox:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.consent-checkbox:checked {
+  border-color: var(--accent-focus);
+  background-color: var(--accent-check-bg);
+}
+
+.consent-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 3px;
+  width: 8px;
+  height: 6px;
+  background: none;
+  border: none;
+  /* SVG checkmark via background-image */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8' viewBox='0 0 10 8'%3E%3Cpath d='M1 4L3.5 6.5L9 1' stroke='%23a78bfa' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.consent-checkbox:focus-visible {
+  outline: 2px solid var(--accent-focus);
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BUTTON STATES — Purple CTA per spec
+   ═══════════════════════════════════════════════════════════════════════════ */
+.btn-primary {
+  background: var(--accent-primary);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+  width: 100%;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SPINNER
+   ═══════════════════════════════════════════════════════════════════════════ */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--text-primary);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LIVE PULSE — City indicator dot
+   ═══════════════════════════════════════════════════════════════════════════ */
+@keyframes livepulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.live-pulse {
+  animation: livepulse 2s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TERMS LEFT BORDER — Purple accent
+   ═══════════════════════════════════════════════════════════════════════════ */
+.terms-section {
+  border-left: 2px solid rgba(167, 139, 250, 0.2);
+  padding-left: 24px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════════════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+}
