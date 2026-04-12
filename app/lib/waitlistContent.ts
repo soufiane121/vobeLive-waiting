@@ -23,7 +23,11 @@ export const hero = {
 	launchBadgeCity: CITY.toUpperCase(),
 	launchBadgeSuffix: "FIRST",
 	headlineWhite: "Your city is\ngoing out.",
-	headlineAccent: "Know where the FUN actually is.",
+	headlineAccent: "Know where the <span>FUN<span> actuallyis.",
+	headlineAccentPrefix: "Know where the ",
+	headlineAccentHighlight: "FUN",
+	headlineAccentColor: "#aec7e5",
+	headlineAccentSuffix: " actually is.",
 	subheadline: `Real-time nightlife signals — where the energy actually is tonight. We're building it. Get early access when we go live.`,
 };
 

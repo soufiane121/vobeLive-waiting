@@ -206,6 +206,7 @@ export default function HeroVisual() {
 				transform: "rotate(10deg)",
 				width: dims.width,
 				height: dims.height,
+				position: "relative",
 			}}
 			aria-hidden="true"
 		>
@@ -291,6 +292,70 @@ export default function HeroVisual() {
 							borderRadius: 2,
 						}}
 					/>
+				</div>
+			</div>
+
+			{/* Venue Labels - positioned outside phone frame */}
+			{/* Label 1 - upper right */}
+			<div
+				style={{
+					position: "absolute",
+					top: "20%",
+					right: "-15%",
+					background: "rgba(13,17,23,0.9)",
+					border: "1px solid rgba(79,126,232,0.3)",
+					borderRadius: "6px",
+					padding: "6px 10px",
+					zIndex: 20,
+				}}
+			>
+				<div style={{ fontSize: "10px", fontWeight: 600, color: "#F0F2F5", letterSpacing: "0.02em" }}>
+					[Q*** L***]
+				</div>
+				<div style={{ fontSize: "9px", color: "#9CA3AF", marginTop: "2px" }}>
+					Vibe: High | Entry: Fast
+				</div>
+			</div>
+
+			{/* Label 2 - middle left */}
+			<div
+				style={{
+					position: "absolute",
+					top: "35%",
+					left: "-10%",
+					background: "rgba(13,17,23,0.9)",
+					border: "1px solid rgba(79,126,232,0.3)",
+					borderRadius: "6px",
+					padding: "6px 10px",
+					zIndex: 20,
+				}}
+			>
+				<div style={{ fontSize: "10px", fontWeight: 600, color: "#F0F2F5", letterSpacing: "0.02em" }}>
+					[A***]
+				</div>
+				<div style={{ fontSize: "9px", color: "#9CA3AF", marginTop: "2px" }}>
+					Peak Capacity
+				</div>
+			</div>
+
+			{/* Label 3 - lower right */}
+			<div
+				style={{
+					position: "absolute",
+					bottom: "20%",
+					right: "30%",
+					background: "rgba(13,17,23,0.9)",
+					border: "1px solid rgba(79,126,232,0.3)",
+					borderRadius: "6px",
+					padding: "6px 10px",
+					zIndex: 20,
+				}}
+			>
+				<div style={{ fontSize: "10px", fontWeight: 600, color: "#F0F2F5", letterSpacing: "0.02em" }}>
+					[F*** T***]
+				</div>
+				<div style={{ fontSize: "9px", color: "#9CA3AF", marginTop: "2px" }}>
+					Peak Capacity
 				</div>
 			</div>
 		</div>
