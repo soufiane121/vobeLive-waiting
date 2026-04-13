@@ -23,7 +23,7 @@ export default function FeatureCards() {
       </p>
 
       {/* Rows */}
-      <div>
+      <div style={{position: 'relative', zIndex: 2}}>
         {featuresSection.cards.map((card, i) => (
           <div
             key={i}
