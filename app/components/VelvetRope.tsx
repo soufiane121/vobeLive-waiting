@@ -88,7 +88,7 @@ export default function VelvetRope({ recentEmails }: VelvetRopeProps) {
 					lineHeight: 1.4,
 				}}
 			>
-				<span style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>
+				<span style={{ color: "var(--accent-secondary)", fontWeight: 600, paddingRight: '2px' }}>
 					{count}
 				</span>{" "}
 				{velvetRope.label(velvetRope.city)}

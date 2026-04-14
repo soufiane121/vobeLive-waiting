@@ -61,7 +61,7 @@ export const signupForm = {
 /* ── Velvet Rope (social proof under button) ──────────────────────────── */
 export const velvetRope = {
 	minPeople: 1,
-	maxPeople: 5,
+	maxPeople: 15,
 	maxAvatars: 4,
 	city: CITY,
 	label: (city: string) => `people joined the ${city} list in the last hour - spots are going fast`,
@@ -106,7 +106,7 @@ export const featuresSection = {
 
 /* ── Launch cities ──────────────────────────────────────────────────────── */
 export const launchCities = {
-	sectionLabel: "WERE WE'RE LAUNCHING",
+	sectionLabel: "WHERE WE'RE LAUNCHING",
 	cities: [
 		{ name: CITY, isPrimary: true, suffix: "launching first" },
 		{ name: "Nashville", isPrimary: false, suffix: "next" },
