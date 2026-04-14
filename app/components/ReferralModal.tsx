@@ -50,10 +50,20 @@ export default function ReferralModal({
     };
   }, [referralCode]);
 
+  const trackReferralCopied = () => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'referral_copied', {
+        event_category: 'engagement',
+        event_label: 'referral_link_copied',
+      });
+    }
+  };
+
   const handleCopy = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(referralUrl);
       setCopied(true);
+      trackReferralCopied();
       setTimeout(() => setCopied(false), 2000);
     } catch {
       // Fallback — select input

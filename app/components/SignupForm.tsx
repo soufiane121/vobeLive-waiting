@@ -23,9 +23,63 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
     "idle" | "loading" | "success" | "error"
   >("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [hasTrackedStart, setHasTrackedStart] = useState(false);
+  const [hasTrackedTyping, setHasTrackedTyping] = useState(false);
 
   const isEmailValid = EMAIL_RE.test(email.trim());
   const isDisabled = !isEmailValid || !consented || submitState === "loading";
+
+  const trackFormStart = () => {
+    if (!hasTrackedStart) {
+      setHasTrackedStart(true);
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'form_start', {
+          event_category: 'engagement',
+          event_label: 'waitlist_form',
+        });
+      }
+    }
+  };
+
+  const trackInputClick = (inputName: string) => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'input_focus', {
+        event_category: 'engagement',
+        event_label: inputName,
+      });
+    }
+    trackFormStart();
+  };
+
+  const trackInputStarted = (inputName: string) => {
+    if (!hasTrackedTyping) {
+      setHasTrackedTyping(true);
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'input_started', {
+          event_category: 'engagement',
+          event_label: inputName,
+        });
+      }
+    }
+  };
+
+  const trackConsentChecked = () => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'consent_checked', {
+        event_category: 'engagement',
+        event_label: 'terms_agreed',
+      });
+    }
+  };
+
+  const trackSubmitHover = () => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'submit_hover', {
+        event_category: 'engagement',
+        event_label: 'submit_button',
+      });
+    }
+  };
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
@@ -118,7 +172,11 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
         id="email"
         type="email"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => {
+          setEmail(e.target.value);
+          trackInputStarted('email_typing');
+        }}
+        onClick={() => trackInputClick('email_input')}
         placeholder={signupForm.emailPlaceholder}
         autoComplete="email"
         required
@@ -137,7 +195,11 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
         id="city"
         type="text"
         value={cityInput}
-        onChange={(e) => setCityInput(e.target.value)}
+        onChange={(e) => {
+          setCityInput(e.target.value);
+          trackInputStarted('city_typing');
+        }}
+        onClick={() => trackInputClick('city_input')}
         placeholder={signupForm.cityPlaceholder}
         autoComplete="address-level2"
         aria-label="Your city"
@@ -155,7 +217,10 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
         <input
           type="checkbox"
           checked={consented}
-          onChange={(e) => setConsented(e.target.checked)}
+          onChange={(e) => {
+          setConsented(e.target.checked);
+          if (e.target.checked) trackConsentChecked();
+        }}
           className="consent-checkbox mt-0.5"
           aria-label="I agree to the terms of use"
         />
@@ -181,6 +246,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
         type="submit"
         disabled={isDisabled}
         className="btn-primary flex items-center justify-center gap-2"
+        onMouseEnter={trackSubmitHover}
       >
         {submitState === "loading" ? (
           <span className="spinner" />
