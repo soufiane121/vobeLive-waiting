@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 
 const appName = process.env.NEXT_PUBLIC_APP_NAME || '';
 const city = process.env.NEXT_PUBLIC_LAUNCH_CITY!;
@@ -35,6 +36,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-brand-bg text-brand-text antialiased">
         {children}
+        <GoogleAnalytics />
       </body>
     </html>
   );

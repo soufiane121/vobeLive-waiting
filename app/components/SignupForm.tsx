@@ -54,6 +54,13 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
             referralCode: existingUser.referral_code,
             queuePosition: existingUser.queue_position,
           });
+          // GA conversion tracking
+          if (typeof window !== 'undefined' && (window as any).gtag) {
+            (window as any).gtag('event', 'waitlist_signup', {
+              event_category: 'conversion',
+              event_label: 'existing_user',
+            });
+          }
           return;
         }
 
@@ -82,6 +89,13 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
           referralCode: newEntry.referral_code,
           queuePosition: newEntry.queue_position,
         });
+        // GA conversion tracking
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'waitlist_signup', {
+            event_category: 'conversion',
+            event_label: 'new_signup',
+          });
+        }
       } catch (err) {
         console.error("Signup error:", err);
         setSubmitState("error");
