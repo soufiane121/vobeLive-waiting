@@ -131,7 +131,7 @@ export default function WaitlistPage() {
 							<div
 								style={{ borderTop: "0.5px solid rgba(255,255,255,0.05)" }}
 							/>
-							<LaunchCities />
+							{/* <LaunchCities /> */}
 						</div>
 					</main>
 

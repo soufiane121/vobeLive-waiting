@@ -28,8 +28,10 @@ export const hero = {
 	headlineAccentHighlight: "FUN",
 	headlineAccentColor: "#aec7e5",
 	headlineAccentSuffix: " actually is.",
-	subheadline: `Real-time nightlife signals — where the energy actually is tonight. We're building it. Get early access when we go live.`,
-};
+	subheadline: `Some people always end up in the right place on a Friday night.
+		It's not luck. They have better information than you.
+		Now you will too.`,
+	};
 
 /* ── Queue position card ────────────────────────────────────────────────── */
 export const queueCard = {
@@ -53,7 +55,7 @@ export const signupForm = {
 	consentLinkText: "terms of use",
 	consentLinkHref: "/terms",
 	disclaimer: (city: string) =>
-		`No app download. No credit card. We'll only email when ${city} goes live.`,
+		`No app download. No credit card. ${city} gets it first. Everyone else waits`,
 };
 
 /* ── Velvet Rope (social proof under button) ──────────────────────────── */
@@ -62,7 +64,7 @@ export const velvetRope = {
 	maxPeople: 5,
 	maxAvatars: 4,
 	city: CITY,
-	label: (city: string) => `people joined the ${city} list in the last hour`,
+	label: (city: string) => `people joined the ${city} list in the last hour - spots are going fast`,
 	fallbackEmails: [
 		"alex@example.com",
 		"jordan@example.com",
@@ -79,28 +81,37 @@ export const featuresSection = {
 			icon: "signal" as const,
 			title:
 				"The best night is happening now. Most people miss it, don't be one",
-			description: `Right now in ${CITY}, something is peaking. Not tomorrow. Not in last week's reviews. Live signals from real people, show what's packed, what's dead, what's about to pop`,
+			description: `Right now in ${CITY} something is peaking.
+					Not last week's reviews. Not tomorrow's forecast.
+					What's packed tonight. What's about to hit.
+					What's already dying. Real people. Right now.`,
 		},
 		{
 			icon: "neighborhood" as const,
 			title: "30 Minutes in the group chat. Still no plan.",
-			description: `Downtown or Uptown? Everyone's typing, nobody's deciding. We cut through the noise with neighborhood intel, know exactly where to go before you leave.`,
+			description: `Downtown or Uptown? Everyone's typing, nobody's deciding.
+					Know exactly where your group should be
+					before anyone opens the chat.`,
 		},
 		{
 			icon: "alert" as const,
 			title: "It's not locals. It's people with the right info",
-			description: `The ones who go out best arn't guessing. They have real time data, one alert. The right spot. No sponsored venues. No fluff`,
+			description: `The ones who always know aren't from here.
+					They just have better information.
+					One alert. The right place. No guessing.
+					No sponsored results. No noise.`,
 		},
 	],
 };
 
 /* ── Launch cities ──────────────────────────────────────────────────────── */
 export const launchCities = {
-	sectionLabel: "LAUNCH CITIES",
+	sectionLabel: "WERE WE'RE LAUNCHING",
 	cities: [
 		{ name: CITY, isPrimary: true, suffix: "launching first" },
-		{ name: "Nashville", isPrimary: false, suffix: 'next' },
+		{ name: "Nashville", isPrimary: false, suffix: "next" },
 		{ name: "Miami", isPrimary: false, suffix: null },
+		{ name: "NYC", isPrimary: false, suffix: null },
 		{ name: "Atlanta", isPrimary: false, suffix: null },
 		{ name: "Austin", isPrimary: false, suffix: null },
 	],

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { signupForm, env } from "../lib/waitlistContent";
 import VelvetRope from "./VelvetRope";
 import { supabaseBrowser } from "../utils/supabase/browser";
+import LaunchCities from "./LaunchCities";
 
 interface SignupFormProps {
   onSuccess: (data: { referralCode: string; queuePosition: number }) => void;
@@ -181,6 +182,7 @@ export default function SignupForm({ onSuccess }: SignupFormProps) {
 
       {/* Velvet Rope — social proof */}
       <VelvetRope />
+      <LaunchCities />
 
       {/* Error message */}
       {submitState === "error" && errorMsg && (
