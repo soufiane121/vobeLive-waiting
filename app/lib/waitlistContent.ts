@@ -110,8 +110,9 @@ export const launchCities = {
 	cities: [
 		{ name: CITY, isPrimary: true, suffix: "launching first" },
 		{ name: "Nashville", isPrimary: false, suffix: "next" },
-		{ name: "Miami", isPrimary: false, suffix: null },
 		{ name: "NYC", isPrimary: false, suffix: null },
+		{ name: "Miami", isPrimary: false, suffix: null },
+		{ name: "Chicago", isPrimary: false, suffix: null },
 		{ name: "Atlanta", isPrimary: false, suffix: null },
 		{ name: "Austin", isPrimary: false, suffix: null },
 	],
