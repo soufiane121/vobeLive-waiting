@@ -34,7 +34,7 @@ export default function WaitlistPage() {
 			{/* ═══════ PAGE WRAPPER — centered, max-width for desktop ═══════ */}
 			<div className="relative z-[2] min-h-screen w-full max-w-[1200px] mx-auto">
 				{/* Navbar — full width */}
-				<NavBar />
+				{/* <NavBar /> */}
 
 				{/* Mobile: iPhone mockup above hero */}
 				<div className="flex lg:hidden justify-center pt-6 pb-2 fixed mr-2 right-0">
@@ -48,7 +48,7 @@ export default function WaitlistPage() {
 						{/* Hero */}
 						<section style={{ padding: "24px 0 24px" }}>
 							{/* Eyebrow */}
-							<p
+							{/* <p
 								className="uppercase animate-fade-in"
 								style={{
 									fontSize: "11px",
@@ -62,7 +62,7 @@ export default function WaitlistPage() {
 									{hero.launchBadgeCity}
 								</span>{" "}
 								{hero.launchBadgeSuffix}
-							</p>
+							</p> */}
 
 							{/* Headline */}
 							<h1
@@ -73,13 +73,13 @@ export default function WaitlistPage() {
 									{hero.headlineWhite}
 								</span>
 								<br />
-								<span style={{ color: hero.headlineAccentColor }}>
+								{/* <span style={{ color: hero.headlineAccentColor }}>
 									{hero.headlineAccentPrefix}
 									<span style={{ color: "var(--accent-secondary)" }}>
 										{hero.headlineAccentHighlight}
 									</span>
 									{hero.headlineAccentSuffix}
-								</span>
+								</span> */}
 							</h1>
 
 							{/* Subheadline */}
@@ -92,6 +92,7 @@ export default function WaitlistPage() {
 									maxWidth: "360px",
 									lineHeight: 1.65,
 									animationDelay: "0.15s",
+									backgroundColor: "var(--bg-primary)",
 								}}
 							>
 								{hero.subheadline}

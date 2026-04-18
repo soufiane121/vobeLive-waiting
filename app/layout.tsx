@@ -7,17 +7,17 @@ const city = process.env.NEXT_PUBLIC_LAUNCH_CITY!;
 
 export const metadata: Metadata = {
 	metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL!),
-	title: `${appName} - Know where tonight is worth going`,
+	title: `${appName} - Know the vibe before you go.`,
 	description: `The live nightlife map that shows what's actually happening inside venues right now. Join the waitlist — launching in ${city} first.`,
 	openGraph: {
-		title: `${appName} — Know where tonight is worth going`,
+		title: `${appName} — Know the vibe before you go.`,
 		description: `Join the waitlist. Be first when we launch in your city.`,
 		images: ["/og-image.jpg"],
 		type: "website",
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: `${appName} — Know where tonight is worth going`,
+		title: `${appName} — Know the vibe before you go.`,
 		description: `Join the waitlist. Be first when we launch in your city.`,
 	},
 };

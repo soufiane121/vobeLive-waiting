@@ -22,16 +22,18 @@ export const hero = {
 	launchBadgePrefix: "LAUNCHING IN",
 	launchBadgeCity: CITY.toUpperCase(),
 	launchBadgeSuffix: "FIRST",
-	headlineWhite: "Your city is\ngoing out.",
+	headlineWhite: "Know the vibe\nbefore you go.",
 	headlineAccent: "Know where the <span>FUN<span> actuallyis.",
 	headlineAccentPrefix: "Know where the ",
 	headlineAccentHighlight: "FUN",
 	headlineAccentColor: "#aec7e5",
 	headlineAccentSuffix: " actually is.",
-	subheadline: `Some people always end up in the right place on a Friday night.
-		It's not luck. They have better information than you.
-		Now you will too.`,
-	};
+	// subheadline: `Some people always end up in the right place on a Friday night.
+	// 	It's not luck. They have better information than you.
+	// 	Now you will too.`,
+	subheadline:
+		`Cheat code for real-time signals for your city's best nights out, if it's not the vibe, you'll know. Early access is limited, so secure your spot before we fill up in ${CITY}`,
+};
 
 /* ── Queue position card ────────────────────────────────────────────────── */
 export const queueCard = {
@@ -64,7 +66,8 @@ export const velvetRope = {
 	maxPeople: 15,
 	maxAvatars: 4,
 	city: CITY,
-	label: (city: string) => `people joined the ${city} list in the last hour - spots are going fast`,
+	label: (city: string) =>
+		`people joined the ${city} list in the last hour - spots are going fast`,
 	fallbackEmails: [
 		"alex@example.com",
 		"jordan@example.com",
@@ -109,11 +112,11 @@ export const launchCities = {
 	sectionLabel: "WHERE WE'RE LAUNCHING",
 	cities: [
 		{ name: CITY, isPrimary: true, suffix: "launching first" },
-		{ name: "Nashville", isPrimary: false, suffix: "next" },
+		{ name: "Atlanta", isPrimary: false, suffix: "Next" },
 		{ name: "NYC", isPrimary: false, suffix: null },
 		{ name: "Miami", isPrimary: false, suffix: null },
 		{ name: "Chicago", isPrimary: false, suffix: null },
-		{ name: "Atlanta", isPrimary: false, suffix: null },
+		{ name: "Nashville", isPrimary: false, suffix: null },
 		{ name: "Austin", isPrimary: false, suffix: null },
 	],
 };
